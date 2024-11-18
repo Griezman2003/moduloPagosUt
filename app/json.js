@@ -1,5 +1,5 @@
 
-    const data = [
+    const dato = [
         { id: 1, 
             nombre: 'Blurryface 125', 
             fecha: '17/11/2024', 
@@ -31,14 +31,14 @@
             cardNumber: '1478 2265 4595 9874',
             name: 'Gamaliel Garcia',
             cardType: 'Mastercard',
-            imageSource: require('../../assets/images/mastercard.jpg'),
+            imageSource: require('../assets/images/mastercard.jpg'),
         },
         {id:2,
             date: '18/2024',
             cardNumber: '2345 6789 1234 5678',
             name: 'Maria Lopez',
             cardType: 'Visa',
-            imageSource: require('../../assets/images/mastercard.jpg'),
+            imageSource: require('../assets/images/mastercard.jpg'),
         },
         {
             id:3,
@@ -46,8 +46,7 @@
             cardNumber: '2345 6789 1234 5678',
             name: 'Juan lopez',
             cardType: 'Mastercard',
-            imageSource: require('../../assets/images/mastercard.jpg'),
+            imageSource: require('../assets/images/mastercard.jpg'),
         }
         ];
-
-        export { data, targetas };
+export {dato, targetas}

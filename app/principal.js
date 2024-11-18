@@ -2,8 +2,8 @@ import {ScrollView, View, Text, StyleSheet, TouchableOpacity} from "react-native
 import { Avatar, Card, Button } from "react-native-paper";
 import { FontAwesome } from '@expo/vector-icons'; 
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { LinearGradient } from 'expo-linear-gradient';
-import { data, targetas } from "../app/dato/json";
+import { dato} from "./json";
+import { targetas } from './json';
 
 export default function Principal (){
     return (
@@ -18,31 +18,21 @@ export default function Principal (){
         </View>
         {/* ----------------------------------------------------------------------------------------- */}
         
-        <ScrollView
-        style={{ marginTop: 30, height: 250 }}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        >
+        <ScrollView style={{ marginTop: 30, height: 250 }} horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={{ flexDirection: 'row' }}>
         {targetas.map((item) => (
             <View key={item.id} style={{ marginRight: 10 }}>
-            <LinearGradient
-            colors={['#5C34A6', '#A280CF', '#5C34A6']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={{ borderRadius: 25, margin: 5 }}
-            >
-            <Card style={{ backgroundColor: 'transparent', width: 360, borderRadius: 25, flex: 1 }}>
+            <Card style={{ backgroundColor: '#5C34A6', width: 372, borderRadius: 25, flex: 1 }}>
             <Card.Content style={{ gap: 20 }}>
             <Text style={{ textAlign: 'right', color: 'white' }} variant="bodyMedium">
             {item.date}
             </Text>
-            <View style={{ display: 'flex', justifyContent: 'center', height: 60 }}>
+            <View style={{ justifyContent: 'center', height: 70 }}>
             <Text style={{ color: 'white', fontSize: 20, letterSpacing: 3 }} variant="bodyMedium">
             {item.cardNumber}
             </Text>
             </View>
-            <View style={{display: 'flex',alignItems: 'center',flexDirection: 'row',gap: 150,height: 90,}}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: 90 }}>
             <View style={{ flexDirection: 'column', gap: 10 }}>
             <Text style={{ color: 'white', fontSize: 15 }} variant="bodyMedium">
             {item.name}
@@ -55,11 +45,11 @@ export default function Principal (){
             </View>
             </Card.Content>
             </Card>
-            </LinearGradient>
             </View>
         ))}
         </View>
         </ScrollView>
+        
         
         {/* ------------------------------------------------------------------------------------------------ */}
         
@@ -88,7 +78,7 @@ export default function Principal (){
         {/* -------------------------------------------------------------------------------------------------------- */}
         
         <View style={{ marginTop: 50, paddingHorizontal:10 }}>
-        {data.map((item) => (
+        {dato.map((item) => (
             <View key={item.id}  style={{ flexDirection: 'row', marginVertical: 20, justifyContent: 'space-between',
                 alignItems:'center', paddingHorizontal:15,
             }}>
