@@ -1,4 +1,4 @@
-import {ScrollView, View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {ScrollView, View, Text, StyleSheet, TouchableOpacity, Pressable} from "react-native";
 import { Avatar, Card, Button } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons'; 
@@ -69,13 +69,13 @@ export default function Principal (){
         </View>
         </TouchableOpacity>
         
-        <TouchableOpacity>
+        <Pressable onPress={()=> navigation.navigate('egreso')}>
         <View>
         <Text style={{color:'white', fontSize:20}}>
         Egresos
         </Text>
         </View>
-        </TouchableOpacity>
+        </Pressable>
         </View>
         </View>
         

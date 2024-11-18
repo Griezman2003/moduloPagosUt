@@ -7,10 +7,9 @@ export default function Registro() {
 
     return (
         <KeyboardAvoidingView style={{ flex: 1 }}
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
-        >
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <ScrollView style={styles.container}>
-                <StatusBar barStyle="dark-content" />
+                <StatusBar barStyle="dark-content"/>
                 <View style={styles.fondologo}></View>
                 <View style={styles.logo}>
                     <Avatar.Image size={80} source={require('../assets/images/react-logo.png')} />

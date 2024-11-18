@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, StatusBar, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, StyleSheet, ScrollView, StatusBar, TouchableOpacity, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
 import { TextInput, Text, Avatar, Checkbox } from 'react-native-paper';
 
 export default function login() {
@@ -9,11 +8,12 @@ export default function login() {
 
     const [checked, setChecked] = useState(false);
     return (
+    <SafeAreaView style={{flex:1}}>
+    <StatusBar barStyle="dark-content"/>
     <KeyboardAvoidingView  style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     > 
         <ScrollView style={styles.container}>
-        <StatusBar barStyle="dark-content" />
         <View style={styles.fondologo}></View>
         <View style={styles.logo}>
         <Avatar.Image size={80} source={require('../assets/images/react-logo.png')} />
@@ -69,6 +69,7 @@ export default function login() {
         
         </ScrollView>
     </KeyboardAvoidingView>
+    </SafeAreaView>
     );
 };
 
