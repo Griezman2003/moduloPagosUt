@@ -6,8 +6,9 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
+//Esto me permite recibir solicitudes de otros origenes
 app.use(cors());
-app.use(bodyParser.json()); //Esto me permite recibir solicitudes de otros origenes
+app.use(bodyParser.json());
 
 
 const Base_de_Datos = mysql.createConnection({
