@@ -1,12 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const JsonComponent = () => {
+export default function perfil() {
   return (
     <View>
-      <Text>Este es el componente JSON</Text>
+      <Text>Este es la vista perfil</Text>
     </View>
   );
 };
 
-export default JsonComponent;
