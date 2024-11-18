@@ -6,14 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 const Sidebar = ({ slideAnim }) => {
     const navigation = useNavigation();
     return (
-        <Animated.View
-        style={[
-            styles.sidebar,
-            {
-                transform: [{ translateX: slideAnim }],
-            },
-        ]}
-        >
+        <Animated.View style={[styles.sidebar,{transform: [{ translateX: slideAnim }]} ]}>
         <Drawer.Section title="Pago ut">
         <Drawer.Item
         label="Inicio"
@@ -35,12 +28,12 @@ const Sidebar = ({ slideAnim }) => {
 const styles = StyleSheet.create({
     sidebar: {
         position: 'absolute',
-        top: 0,
+        top:0,
         left: 0,
         bottom: 0,
         width: '60%',
         backgroundColor: '#100F1F', 
-        zIndex: 2, 
+        zIndex: 1, 
     },
 });
 

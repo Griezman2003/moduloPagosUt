@@ -13,19 +13,14 @@ export default function Principal() {
     const [SidebarVisible, setIsSidebarVisible] = useState(false);
     const slideAnim = useRef(new Animated.Value(-Dimensions.get('window').width * 0.6)).current;
     
-    const toggleSidebar = () => {
-        let toValue;
-        if (SidebarVisible) {
-            toValue = -Dimensions.get('window').width * 0.6;
-        } else {
-            toValue = 0;
-        }
+    const mostrarSidebar = () => {
+        let toValue = 0; //ahora cada que de click se mostrara normal, antes hacia una comprobacion
         Animated.timing(slideAnim, {
             toValue,
             duration: 300,
             useNativeDriver: true,
         }).start();
-        setIsSidebarVisible(!SidebarVisible);
+        setIsSidebarVisible(!SidebarVisible);//se muestra porque cambia su estado a verdadero es igual a poner true
     };
     const closeSidebar = () => {
         Animated.timing(slideAnim, {
@@ -33,7 +28,7 @@ export default function Principal() {
             duration: 300,
             useNativeDriver: true,
         }).start();
-        setIsSidebarVisible(false);
+        setIsSidebarVisible(!SidebarVisible); // se vuelve falsa la varible solo la nege es igual a poner false
     };
     return (
         <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
@@ -48,7 +43,7 @@ export default function Principal() {
         
         {/* contenido general */}
         <View style={style.header}>
-        <Pressable onPress={toggleSidebar}>
+        <Pressable onPress={mostrarSidebar}>
         <AntDesign name="menu-fold" size={35} color="white" />
         </Pressable>
         
@@ -172,11 +167,11 @@ const style = StyleSheet.create({
     },
     overlay: {
         position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        top:0,
+        left:0,
+        right:0,
+        bottom:0,
         backgroundColor: 'rgba(0, 0, 0, 0.5)', 
-        zIndex: 0,
+        zIndex: 1,
     }
 });
