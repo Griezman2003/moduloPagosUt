@@ -10,17 +10,22 @@ import  Sidebar  from "./sidebar";
 export default function Principal() {
     const navigation = useNavigation();
     
-    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+    const [SidebarVisible, setIsSidebarVisible] = useState(false);
     const slideAnim = useRef(new Animated.Value(-Dimensions.get('window').width * 0.6)).current;
     
     const toggleSidebar = () => {
-        const toValue = isSidebarVisible ? -Dimensions.get('window').width * 0.6 : 0;
+        let toValue;
+        if (SidebarVisible) {
+            toValue = -Dimensions.get('window').width * 0.6;
+        } else {
+            toValue = 0;
+        }
         Animated.timing(slideAnim, {
             toValue,
             duration: 300,
             useNativeDriver: true,
         }).start();
-        setIsSidebarVisible(!isSidebarVisible);
+        setIsSidebarVisible(!SidebarVisible);
     };
     const closeSidebar = () => {
         Animated.timing(slideAnim, {
@@ -33,10 +38,10 @@ export default function Principal() {
     return (
         <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
         
-        {isSidebarVisible && (
+        {SidebarVisible && (
             <TouchableOpacity style={style.overlay} onPress={closeSidebar} />
         )}
-
+        
         {/* Sidebar */}
         <Sidebar slideAnim={slideAnim} />
         {/* fin del sidebar */}
