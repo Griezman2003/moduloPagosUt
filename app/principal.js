@@ -22,7 +22,7 @@ export default function Principal (){
         <View style={{ flexDirection: 'row' }}>
         {targetas.map((item) => (
             <View key={item.id} style={{ marginRight: 10 }}>
-            <Card style={{ backgroundColor: '#5C34A6', width: 372, borderRadius: 25, flex: 1 }}>
+            <Card style={{ backgroundColor: '#5C34A6', width: 374, borderRadius: 25, flex: 1 }}>
             <Card.Content style={{ gap: 20 }}>
             <Text style={{ textAlign: 'right', color: 'white' }} variant="bodyMedium">
             {item.date}
