@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, StatusBar, TouchableOpacity, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
+import { View, StyleSheet, ScrollView, StatusBar, TouchableOpacity, KeyboardAvoidingView, Platform, 
+SafeAreaView, Pressable,Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput, Text, Avatar, Checkbox } from 'react-native-paper';
+import {facebook, google, x } from './redes/redes'
 
 export default function login() {
     const navigation = useNavigation();
@@ -52,8 +54,7 @@ export default function login() {
         onPress={() => setChecked(!checked)} 
         />
         <Text onPress={()=>navigation.navigate('registro')} 
-        style={{color: '#626CFA'}}>Registrarse</Text>
-
+        style={{color: '#626CFA', marginLeft:50}}>Registrarse</Text>
         </View>
         
         
@@ -62,9 +63,15 @@ export default function login() {
         </View>
         
         <View style={styles.redSocial}>
+        <Pressable onPress={google}>
         <Avatar.Image size={40} source={require('../assets/images/google.png')} />
+        </Pressable>
+        <Pressable onPress={facebook}>
         <Avatar.Image size={40} source={require('../assets/images/facebook.png')} />
+        </Pressable>
+        <Pressable onPress={x}>
         <Avatar.Image size={40} source={require('../assets/images/x3.jpg')} />
+        </Pressable>
         </View>
         
         </ScrollView>
@@ -114,14 +121,15 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
     },
     buttonContainer: {
-        padding: 20,
+        paddingVertical: 20,
+        paddingHorizontal:20,
     },
     checkbox: {
         display: 'flex',
         alignItems: 'center',
         justifyContent:'center',
         flexDirection: 'row',
-        padding: 20,
+        paddingVertical: 20,
     },
     redSocial:{
         display:'flex',
