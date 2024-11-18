@@ -69,6 +69,8 @@ app.post('/login', (req, res) => {
     });
 });
 
+
+//ruta para realizar el pago todavia no terminado
 app.post('/create-payment-intent', async (req, res) => {
     const { amount } = req.body;  // El monto debe ser enviado desde el cliente en centavos
 
