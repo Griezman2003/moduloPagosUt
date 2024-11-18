@@ -2,8 +2,8 @@ import {ScrollView, View, Text, StyleSheet, TouchableOpacity} from "react-native
 import { Avatar, Card, Button } from "react-native-paper";
 import { FontAwesome } from '@expo/vector-icons'; 
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { dato} from "./json";
-import { targetas } from './json';
+import { dato, targetas } from "./json/json";
+
 
 export default function Principal (){
     return (
