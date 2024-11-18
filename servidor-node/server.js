@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 
 const Base_de_Datos = mysql.createConnection({
-    host: 'localhost', 
+    host: '192.168.1.69', 
     user: 'root', 
     password: '', 
     database: 'pagout' 
@@ -44,7 +44,7 @@ app.post('/registro', (req, res) => {
     });
 });
 
-// Ruta para iniciar sesión importante pedimos correo y contrasena
+// Ruta para iniciar sesión importante pedimos correo y contraseña
 app.post('/login', (req, res) => {
     const { correo, contraseña } = req.body;
 

@@ -18,7 +18,7 @@ import { View, StyleSheet, ScrollView, StatusBar, TouchableOpacity, KeyboardAvoi
             }
             
             try {
-                const response = await fetch('http://localhost:3000/login', {
+                const response = await fetch('http://192.168.1.69:3000/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -13,7 +13,7 @@ export default function Registro() {
             return;
         }
         try {
-            const response = await fetch('http://localhost:3000/registro', {
+            const response = await fetch('http://192.168.1.69:3000/registro', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
