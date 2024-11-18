@@ -2,6 +2,8 @@ const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const stripe = require('stripe')('tu_clave_secreta'); 
+
 
 const app = express();
 const PORT = 3000;
@@ -12,13 +14,13 @@ app.use(bodyParser.json());
 
 
 const Base_de_Datos = mysql.createConnection({
-    host: '192.168.1.69', 
+    host: 'localhost', 
     user: 'root', 
     password: '', 
     database: 'pagout' 
 });
 
-// Aquui solo valido la conexion de la base de datos
+// Aqui solo valido la conexion de la base de datos
 Base_de_Datos.connect((error) => {
     if (error) {
         console.error('Error al conectar a la base de datos:', error);
@@ -65,6 +67,24 @@ app.post('/login', (req, res) => {
             return res.status(401).send('Credenciales incorrectas');
         }
     });
+});
+
+app.post('/create-payment-intent', async (req, res) => {
+    const { amount } = req.body;  // El monto debe ser enviado desde el cliente en centavos
+
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: amount,  // Monto en centavos (por ejemplo, 5000 para 50.00 USD)
+            currency: 'usd',  // O la moneda que necesites
+        });
+
+        res.send({
+            clientSecret: paymentIntent.client_secret,  // Este es el secreto que necesitarás en el frontend
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: error.message });
+    }
 });
 
 
