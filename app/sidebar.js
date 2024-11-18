@@ -1,4 +1,3 @@
-// Sidebar.js
 import React from 'react';
 import { Animated, StyleSheet, Dimensions } from 'react-native';
 import { Drawer } from 'react-native-paper';
