@@ -1,16 +1,20 @@
 import {ScrollView, View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import { Avatar, Card, Button } from "react-native-paper";
+import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons'; 
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { dato, targetas } from "./json/json";
 
 
 export default function Principal (){
+    const navigation = useNavigation();
     return (
         <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
         <View style={style.header}>
         <AntDesign name="menu-fold" size={35} color="white" />
+        <TouchableOpacity onPress={()=>navigation.navigate('perfil')}>
         <FontAwesome name="user" size={35} color="white" />
+        </TouchableOpacity>
         </View>
         <View style={style.balance}>
         <Text style={{color:'white', fontSize:12}}>Total de Balance</Text>
