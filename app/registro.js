@@ -3,13 +3,44 @@ import { View, StyleSheet, ScrollView, StatusBar, Alert, TouchableOpacity, Keybo
 import { TextInput, Text, Avatar } from 'react-native-paper';
 
 export default function Registro() {
-    const [checked, setChecked] = useState(false);
+    const [nombre, setNombre] = useState('');
+    const [correo, setCorreo] = useState('');
+    const [contraseña, setContraseña] = useState('');
+
+    const handleRegister = async () => {
+        if (!nombre || !correo || !contraseña) {
+            Alert.alert('Por favor complete todos los campos');
+            return;
+        }
+        try {
+            const response = await fetch('http://localhost:3000/registro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    nombre,
+                    correo,
+                    contraseña
+                })
+            });
+
+            if (response.ok) {
+                Alert.alert('Usuario registrado exitosamente');
+            } else {
+                Alert.alert('Error al registrar el usuario');
+            }
+        } catch (error) {
+            console.error(error);
+            Alert.alert('Hubo un problema al registrar el usuario');
+        }
+    };
 
     return (
         <KeyboardAvoidingView style={{ flex: 1 }}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <ScrollView style={styles.container}>
-                <StatusBar barStyle="dark-content"/>
+                <StatusBar barStyle="dark-content" />
                 <View style={styles.fondologo}></View>
                 <View style={styles.logo}>
                     <Avatar.Image size={80} source={require('../assets/images/react-logo.png')} />
@@ -21,6 +52,8 @@ export default function Registro() {
                     <TextInput
                         style={styles.input}
                         placeholder="Admin"
+                        value={nombre}
+                        onChangeText={setNombre}
                     />
 
                     <Text style={styles.label}>Correo</Text>
@@ -28,6 +61,8 @@ export default function Registro() {
                         style={styles.input}
                         placeholder="Test@test.com"
                         keyboardType="email-address"
+                        value={correo}
+                        onChangeText={setCorreo}
                     />
 
                     <Text style={styles.label}>Contraseña</Text>
@@ -35,6 +70,8 @@ export default function Registro() {
                         style={styles.input}
                         placeholder="********"
                         secureTextEntry
+                        value={contraseña}
+                        onChangeText={setContraseña}
                     />
                 </View>
 
@@ -47,7 +84,7 @@ export default function Registro() {
                             justifyContent: 'center',
                             alignItems: 'center',
                         }}
-                        onPress={() => Alert.alert('RegistroScreen')}
+                        onPress={handleRegister}
                     >
                         <Text style={{ color: 'white', fontSize: 20 }}>Registra tu cuenta</Text>
                     </TouchableOpacity>
