@@ -72,16 +72,16 @@ app.post('/login', (req, res) => {
 
 //ruta para realizar el pago todavia no terminado
 app.post('/create-payment-intent', async (req, res) => {
-    const { amount } = req.body;  // El monto debe ser enviado desde el cliente en centavos
+    const { amount } = req.body;
 
     try {
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: amount,  // Monto en centavos (por ejemplo, 5000 para 50.00 USD)
-            currency: 'usd',  // O la moneda que necesites
+            amount: amount, 
+            currency: 'mx',  
         });
 
         res.send({
-            clientSecret: paymentIntent.client_secret,  // Este es el secreto que necesitarás en el frontend
+            clientSecret: paymentIntent.client_secret, 
         });
     } catch (error) {
         console.error(error);

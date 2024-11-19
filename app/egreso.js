@@ -5,7 +5,7 @@ import { useStripe } from '@stripe/stripe-react-native';
 const PaymentScreen = () => {
     const { confirmPayment } = useStripe();
     const [loading, setLoading] = useState(false);
-    const [amount, setAmount] = useState('');  // Monto en centavos
+    const [amount, setAmount] = useState(''); 
     const [name, setName] = useState('');
     const [cardDetails, setCardDetails] = useState('');
 
@@ -18,20 +18,18 @@ const PaymentScreen = () => {
         setLoading(true);
 
         try {
-            // Llamamos a nuestro backend para crear un PaymentIntent
             const response = await fetch('http://localhost:3000/create-payment-intent', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    amount: parseInt(amount),  // Asegúrate de pasar el monto en centavos
+                    amount: parseInt(amount),
                 }),
             });
 
             const { clientSecret } = await response.json();
 
-            // Confirmamos el pago usando los detalles de la tarjeta
             const { error, paymentIntent } = await confirmPayment(clientSecret, {
                 type: 'Card',
                 billingDetails: {
@@ -74,7 +72,7 @@ const PaymentScreen = () => {
             />
 
             <Text style={styles.label}>Detalles de la tarjeta:</Text>
-            {/* Aquí integrarías el componente de tarjeta de Stripe */}
+            {/* Aquí integrar el componente de tarjeta de Stripe */}
             <TextInput
                 style={styles.input}
                 placeholder="Detalles de la tarjeta (futuro campo)"
