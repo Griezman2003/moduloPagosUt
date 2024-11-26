@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput, Alert, StyleSheet } from 'react-native';
-import { useStripe } from '@stripe/stripe-react-native';
+
 
 const PaymentScreen = () => {
     const { confirmPayment } = useStripe();
